@@ -61,7 +61,7 @@ const Header = () => {
                         // Change text color based on scroll state for contrast
                         hasScrolled ? "text-foreground" : "text-white"
                     )}>
-            MYORG
+            Company Awesome
           </span>
                 </Link>
 

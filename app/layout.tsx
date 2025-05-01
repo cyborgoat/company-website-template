@@ -14,8 +14,8 @@ const inter = Inter({
 
 // Define metadata for the application (used in <head>)
 export const metadata: Metadata = {
-    title: "Figure Clone - AI Robots", // Site title
-    description: "Next.js clone inspired by the Figure AI website, using Tailwind v4.", // Site description
+    title: "Company Awesome", // Site title
+    description: "Company Website Template", // Site description
 };
 
 // Root layout component
