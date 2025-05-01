@@ -28,13 +28,16 @@ const Header = () => {
     }, []); // Empty dependency array means this effect runs only once on mount
 
     // Array containing navigation link data
+    // --- MODIFIED: Added new links here ---
     const navLinks = [
-        { href: "/myorg-01", label: "Myorg-01" },
-        { href: "/deployments", label: "Deployments" },
-        { href: "/careers", label: "Careers" },
-        { href: "/about", label: "About" },
-        { href: "/news", label: "News" },
+        // { href: "/myorg-01", label: "Myorg-01" }, // Example existing link
+        { href: "/team", label: "Team" }, // New Link
+        { href: "/demos", label: "Demos" }, // New Link
+        { href: "/projects", label: "Projects" }, // New Link (links to /projects overview)
+        { href: "/about", label: "About" }, // Existing Link
+        { href: "/news", label: "News" }, // Existing Link
     ];
+    // --- END OF MODIFICATION ---
 
     return (
         // Header element, sticky at the top, with transitions for background/border color
