@@ -1,7 +1,7 @@
-// Example: app/blog/[slug]/page.tsx
+// Example: app/blogs/[slug]/page.tsx
 import MarkdownRenderer from '@/components/MarkdownRenderer';
-// Assume you fetch your blog post data
-// import { getBlogPost } from '@/lib/blog';
+// Assume you fetch your blogs post data
+// import { getBlogPost } from '@/lib/blogs';
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
     // const post = await getBlogPost(params.slug);

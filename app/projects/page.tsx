@@ -129,7 +129,7 @@ export default function ProjectsPage() {
                             {/* Project Image */}
                             <div className="aspect-video relative w-full"> {/* Use aspect ratio for consistent image size */}
                                 <Image
-                                    src={project.imageUrl || "/images/placeholder-project.png"} // Fallback image
+                                    src={project.imageUrl || "https://images.pexels.com/photos/4614204/pexels-photo-4614204.jpeg"} // Fallback image
                                     alt={`${project.title} thumbnail`}
                                     fill // Use fill layout for responsiveness within the relative container
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Optimize image loading

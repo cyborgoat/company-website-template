@@ -1,4 +1,4 @@
-// app/blog/page.tsx
+// app/blogs/page.tsx
 'use client'; // Needed for Framer Motion animations
 
 import React from 'react';
@@ -56,7 +56,7 @@ const blogPosts = [
         date: "2025-05-01", // Use YYYY-MM-DD for easier sorting/parsing
         readTime: "5 min read",
         excerpt: "Exploring upcoming trends like AI integration, edge computing, and the evolution of JavaScript frameworks.",
-        imageUrl: "/images/blog/web-dev-future.png" // Optional: Path in /public folder
+        imageUrl: "https://images.pexels.com/photos/4614204/pexels-photo-4614204.jpeg" // Optional: Path in /public folder
     },
     {
         slug: "cloud-migration-strategies",
@@ -64,7 +64,7 @@ const blogPosts = [
         date: "2025-04-20",
         readTime: "7 min read",
         excerpt: "Practical tips and best practices for small and medium enterprises moving their infrastructure to the cloud.",
-        imageUrl: "/images/blog/cloud-migration.png" // Optional
+        imageUrl: "https://images.pexels.com/photos/4614204/pexels-photo-4614204.jpeg" // Optional
     },
     {
         slug: "minimalist-design-power",
@@ -72,7 +72,7 @@ const blogPosts = [
         date: "2025-04-05",
         readTime: "4 min read",
         excerpt: "How adopting a 'less is more' approach can lead to more intuitive, engaging, and effective user experiences.",
-        imageUrl: "/images/blog/minimalist-design.png" // Optional
+        imageUrl: "https://images.pexels.com/photos/4614204/pexels-photo-4614204.jpeg" // Optional
     },
     // Add more post objects here
 ];
@@ -115,7 +115,7 @@ export default function BlogsPage() {
                 initial="hidden"
                 animate="visible"
             >
-                {/* Map through the blog posts data */}
+                {/* Map through the blogs posts data */}
                 {blogPosts.map((post) => (
                     // Wrapper for each card with individual animation and hover effect
                     <motion.div
@@ -142,7 +142,7 @@ export default function BlogsPage() {
                             <CardHeader>
                                 <CardTitle className="text-xl hover:text-primary transition-colors">
                                     {/* Link the title to the individual post page */}
-                                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                                    <Link href={`/blogs/${post.slug}`}>{post.title}</Link>
                                 </CardTitle>
                                 <div className="flex items-center gap-4 text-xs text-muted-foreground pt-1">
                   <span className="flex items-center gap-1.5">
@@ -165,7 +165,7 @@ export default function BlogsPage() {
                             {/* Card Footer: Read More Button */}
                             <CardFooter>
                                 <Button variant="outline" size="sm" asChild>
-                                    <Link href={`/blog/${post.slug}`}>Read More</Link>
+                                    <Link href={`/blogs/${post.slug}`}>Read More</Link>
                                 </Button>
                             </CardFooter>
                         </Card>
@@ -187,8 +187,8 @@ export default function BlogsPage() {
 
             {/* Reminder about individual post pages */}
             {/*
-        IMPORTANT: You will also need to create a dynamic route page for individual blog posts.
-        This would typically be located at: app/blog/[slug]/page.tsx
+        IMPORTANT: You will also need to create a dynamic route page for individual blogs posts.
+        This would typically be located at: app/blogs/[slug]/page.tsx
         That page would fetch data based on the 'slug' parameter and display the full post content.
       */}
 

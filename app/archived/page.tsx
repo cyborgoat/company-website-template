@@ -13,7 +13,7 @@ import { fadeIn, fadeInUp, staggerContainer } from '@/lib/animations';
 const archivedItems = [
     { id: 'proj-001', type: 'Project', title: "Legacy System Overhaul", date: "2023-05-10", url: "/projects/legacy-system" },
     { id: 'news-005', type: 'News', title: "Company Acquired Startup X", date: "2023-02-15", url: "/news/acquired-startup-x" },
-    { id: 'blog-010', type: 'Blog', title: "The Rise of Serverless", date: "2022-11-01", url: "/blog/rise-of-serverless" },
+    { id: 'blogs-010', type: 'Blog', title: "The Rise of Serverless", date: "2022-11-01", url: "/blog/rise-of-serverless" },
     // ... more items
 ];
 
