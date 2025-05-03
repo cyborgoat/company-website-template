@@ -1,4 +1,4 @@
-// app/blogs/page.tsx
+// app/blog/page.tsx
 'use client'; // Needed for Framer Motion animations
 
 import React from 'react';
@@ -142,7 +142,7 @@ export default function BlogsPage() {
                             <CardHeader>
                                 <CardTitle className="text-xl hover:text-primary transition-colors">
                                     {/* Link the title to the individual post page */}
-                                    <Link href={`/blogs/${post.slug}`}>{post.title}</Link>
+                                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                                 </CardTitle>
                                 <div className="flex items-center gap-4 text-xs text-muted-foreground pt-1">
                   <span className="flex items-center gap-1.5">
@@ -165,7 +165,7 @@ export default function BlogsPage() {
                             {/* Card Footer: Read More Button */}
                             <CardFooter>
                                 <Button variant="outline" size="sm" asChild>
-                                    <Link href={`/blogs/${post.slug}`}>Read More</Link>
+                                    <Link href={`/blog/${post.slug}`}>Read More</Link>
                                 </Button>
                             </CardFooter>
                         </Card>
@@ -188,7 +188,7 @@ export default function BlogsPage() {
             {/* Reminder about individual post pages */}
             {/*
         IMPORTANT: You will also need to create a dynamic route page for individual blog posts.
-        This would typically be located at: app/blogs/[slug]/page.tsx
+        This would typically be located at: app/blog/[slug]/page.tsx
         That page would fetch data based on the 'slug' parameter and display the full post content.
       */}
 

@@ -36,7 +36,7 @@ const Header = () => {
         { href: "/projects", label: "Projects" }, // New Link (links to /projects overview)
         { href: "/about", label: "About" }, // Existing Link
         { href: "/news", label: "News" }, // Existing Link
-        { href: "/blogs", label: "Blogs" }, // Existing Link
+        { href: "/blog", label: "Blog" }, // Existing Link
     ];
     // --- END OF MODIFICATION ---
 
