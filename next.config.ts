@@ -11,6 +11,18 @@ const nextConfig = {
                 port: '',         // Usually empty unless a specific port is needed
                 pathname: '/**',   // Allows any path under this hostname. You could be more specific, e.g., '/photos/**'
             },
+            {
+              protocol: 'https',
+              hostname: 'images.unsplash.com',
+              port: '',
+              pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'media*.giphy.com',
+                port: '',
+                pathname: '/**',
+            },
             // You can add more pattern objects here for other domains
             // Example for another domain:
             // {

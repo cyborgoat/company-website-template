@@ -1,7 +1,7 @@
 ---
 title: "Easy Data Import Tool"
 excerpt: "Learn how to quickly import your existing data from various sources using our intuitive import tool."
-thumbnail: "/images/demos/import-thumb.jpg" # <-- Make sure this image exists in public/images/demos/
+thumbnail: "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnhhMW44dnZzM2h5dXhzb2J5ZjNmNjBwZ292Mmt3bHNjYnN4ZHVxdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EDFsgd92Oosnu/giphy.gif" # <-- Make sure this image exists in public/images/demos/
 # videoUrl is omitted for this demo
 order: 2 # Appears second
 tags: ["data", "import", "integration", "tools"]

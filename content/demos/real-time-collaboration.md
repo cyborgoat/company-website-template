@@ -1,7 +1,7 @@
 ---
 title: "Real-Time Collaboration Feature"
 excerpt: "Watch how multiple users can edit documents simultaneously with our new real-time collaboration engine."
-thumbnail: "/images/demos/collab-thumb.png" # <-- Make sure this image exists in public/images/demos/
+thumbnail: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmtsdHZwM2ZlZHZybjhpOWlwdnB1c3psMXc2OTZ0NzN1MHViY29nbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/A9lgUYVqLeRb2/giphy.gif" # <-- Make sure this image exists in public/images/demos/
 videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" # <-- Replace with your ACTUAL YouTube/Vimeo embed URL
 order: 1 # Appears first
 tags: ["collaboration", "real-time", "editor"]

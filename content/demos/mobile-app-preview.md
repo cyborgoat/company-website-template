@@ -1,7 +1,7 @@
 ---
 title: "Mobile App Sneak Peek"
 excerpt: "Get a first look at our upcoming mobile application for managing your projects on the go."
-thumbnail: "/images/demos/mobile-thumb.gif" # <-- Example using a GIF thumbnail
+thumbnail: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWx0MTZwdGRiZGN5NG95MGN5MXA1NjJwaHp6OTh5M2cwZmJwNnVlbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/B50uxQb0mGpW07HLXy/giphy.gif" # <-- Example using a GIF thumbnail
 videoUrl: "https://www.youtube.com/embed/your_other_video_id" # <-- Replace with your ACTUAL embed URL
 order: 3 # Appears third
 tags: ["mobile", "ios", "android", "preview"]
