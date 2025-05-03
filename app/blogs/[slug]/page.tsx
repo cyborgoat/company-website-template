@@ -1,69 +1,93 @@
-// Example: app/blogs/[slug]/page.tsx
-import MarkdownRenderer from '@/components/MarkdownRenderer';
-// Assume you fetch your blogs post data
-// import { getBlogPost } from '@/lib/blogs';
+// app/blogs/[slug]/page.tsx
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-    // const post = await getBlogPost(params.slug);
-    const post = { // Dummy data for example
-        title: "Styling Your Markdown",
-        markdownContent: `
-# Main Heading (h1)
+import MarkdownRenderer from '@/components/MarkdownRenderer'; // Adjust path if necessary
+// Assume you create lib/blogs.ts similar to lib/news.ts
+import { getAllBlogSlugs, getBlogData, BlogPostData } from '@/lib/blogs'; // Adjust paths/names if necessary
+import { notFound } from 'next/navigation';
+import { Metadata, ResolvingMetadata } from 'next';
+import Link from 'next/link';
 
-This paragraph introduces the topic. We'll explore styling various elements.
-
-## Subheading (h2)
-
-Lists are common:
-
-* Unordered item 1
-* Unordered item 2
-    * Nested item
-
-1.  Ordered item 1
-2.  Ordered item 2
-
-> This is a blockquote. It often stands out a bit.
-> It can span multiple lines.
-
-Let's look at a [link to an example](https://example.com).
-
----
-
-And finally, some code:
-
-\`\`\`tsx
-import React from 'react';
-
-function MyComponent() {
-  return <div>Hello!</div>;
+// Define a type for your blog post data (similar to NewsArticleData)
+interface BlogPostData {
+    slug: string;
+    title: string;
+    date?: string; // Optional date
+    excerpt?: string; // Optional excerpt
+    markdownContent?: string;
+    [key: string]: any; // Allow other frontmatter
 }
-\`\`\`
 
-\`\`\`python
-print("Hello from Python")
-\`\`\`
-
-This is \`inline code\`.
-    `
+// Define props type
+interface BlogPostPageProps {
+    params: {
+        slug: string;
     };
+}
 
-    if (!post) {
-        return <div>Post not found</div>;
+// Add generateStaticParams for blogs
+export async function generateStaticParams() {
+    // Assumes getAllBlogSlugs exists in lib/blogs.ts
+    const paths = getAllBlogSlugs();
+    return paths;
+}
+
+// Add generateMetadata for blogs
+export async function generateMetadata(
+    { params }: BlogPostPageProps,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const slug = params.slug;
+    try {
+        // Assumes getBlogData exists in lib/blogs.ts
+        const post = await getBlogData(slug);
+        return {
+            // Use excerpt if available, otherwise fallback
+            title: post.title,
+            description: post.excerpt || `Read the blog post: ${post.title}`,
+        };
+    } catch (error) {
+        console.error(`Metadata generation failed for /blogs/${slug}:`, error);
+        return {
+            title: 'Blog Post Not Found',
+            description: 'The requested blog post could not be found.',
+        };
+    }
+}
+
+// Update the main component
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+    const slug = params.slug;
+    let post: BlogPostData;
+
+    try {
+        // Use your actual data fetching function from lib/blogs.ts
+        post = await getBlogData(slug);
+    } catch (error) {
+        console.error(`Data fetching failed for blog post slug: ${slug}`, error);
+        notFound(); // Use notFound for 404
     }
 
     return (
-        // Centering Container:
-        // - `container` (optional, if you have it defined globally for padding)
-        // - `mx-auto` centers the block horizontally
-        // - `max-w-3xl` sets a max read width (adjust as needed: prose, 2xl, 4xl etc.)
-        // - `py-8` or `py-12` adds vertical padding
+        // Consistent article structure
         <article className="container mx-auto max-w-3xl py-12">
+            {/* Consistent title structure */}
             <h1 className="text-center text-4xl md:text-5xl font-bold mb-8">{post.title}</h1>
-            {/* MarkdownRenderer itself doesn't need centering classes now */}
-            <MarkdownRenderer>
-                {post.markdownContent}
-            </MarkdownRenderer>
+
+            {/* Consistent Markdown rendering */}
+            {post.markdownContent ? (
+                <MarkdownRenderer>
+                    {post.markdownContent}
+                </MarkdownRenderer>
+            ) : (
+                <p className="text-center text-muted-foreground">Blog post content is missing.</p>
+            )}
+
+            {/* Consistent Back link */}
+            <div className="mt-12 text-center">
+                <Link href="/blogs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    &larr; Back to All Blogs
+                </Link>
+            </div>
         </article>
     );
 }
