@@ -1,3 +1,4 @@
+// components/Header.tsx (or wherever your Header component resides)
 'use client'; // This component uses client-side state and effects
 
 import Link from 'next/link'; // Import Link component for client-side navigation
@@ -27,18 +28,17 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []); // Empty dependency array means this effect runs only once on mount
 
-    // Array containing navigation link data
-    // --- MODIFIED: Added new links here ---
+    // --- REORDERED Navigation Link Data ---
     const navLinks = [
-        // { href: "/myorg-01", label: "Myorg-01" }, // Example existing link
-        { href: "/team", label: "Team" }, // New Link
-        { href: "/demos", label: "Demos" }, // New Link
-        { href: "/projects", label: "Projects" }, // New Link (links to /projects overview)
-        { href: "/about", label: "About" }, // Existing Link
-        { href: "/news", label: "News" }, // Existing Link
-        { href: "/blogs", label: "Blogs" }, // Existing Link
+        { href: "/demos", label: "Demos" },       // Showcase technology
+        { href: "/projects", label: "Projects" }, // Showcase work/case studies
+        { href: "/about", label: "About" },       // Company info
+        { href: "/team", label: "Team" },         // People
+        { href: "/blogs", label: "Blogs" },       // Insights & Articles
+        { href: "/news", label: "News" },         // Updates & Announcements
+        // { href: "/myorg-01", label: "Myorg-01" }, // Example existing link (place according to importance)
     ];
-    // --- END OF MODIFICATION ---
+    // --- END OF REORDERING ---
 
     return (
         // Header element, sticky at the top, with transitions for background/border color
@@ -47,22 +47,22 @@ const Header = () => {
                 "sticky top-0 z-50 w-full border-b transition-colors duration-300 ease-in-out",
                 // Conditional classes based on scroll state
                 hasScrolled
-                    ? "border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80" // Scrolled state: visible border, semi-transparent background with blur
-                    : "border-transparent bg-transparent" // Top state: transparent border and background
+                    ? "border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80" // Scrolled state
+                    : "border-transparent bg-transparent" // Top state
             )}
         >
             {/* Container to constrain header content width */}
             <div className="container flex h-14 max-w-screen-2xl items-center justify-between px-6">
                 {/* Logo linking to the homepage */}
-                <Link href="/" className="mr-6 flex items-center space-x-2" onClick={() => setIsMobileMenuOpen(false)}> {/* Close mobile menu on logo click */}
+                <Link href="/" className="mr-6 flex items-center space-x-2" onClick={() => setIsMobileMenuOpen(false)}>
                     {/* Site Name/Logo */}
                     <span className={cn(
                         "font-bold sm:inline-block text-xl tracking-tight transition-colors",
                         // Change text color based on scroll state for contrast
                         hasScrolled ? "text-foreground" : "text-white"
                     )}>
-            Company Awesome
-          </span>
+                        Company Awesome {/*<-- Replace with your actual name/logo component */}
+                    </span>
                 </Link>
 
                 {/* Desktop Navigation Links (hidden on smaller screens) */}
@@ -85,7 +85,7 @@ const Header = () => {
                 {/* Mobile Navigation Menu (visible on smaller screens) */}
                 <div className="md:hidden">
                     {/* Sheet component acts as a drawer */}
-                    <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}> {/* Control open state */}
+                    <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                         {/* Trigger button for the Sheet */}
                         <SheetTrigger asChild>
                             <Button
@@ -103,7 +103,7 @@ const Header = () => {
                             </Button>
                         </SheetTrigger>
                         {/* Content of the Sheet (the drawer itself) */}
-                        <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background p-6 border-l border-border/40"> {/* Style the drawer */}
+                        <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background p-6 border-l border-border/40">
                             {/* Navigation links inside the mobile menu */}
                             <div className="mt-8 flex flex-col space-y-4">
                                 {navLinks.map((link) => (
