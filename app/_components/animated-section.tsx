@@ -1,6 +1,6 @@
 'use client'; // This component uses client-side animation library
 
-import { motion, MotionProps } from 'framer-motion'; // Import motion component and types from Framer Motion
+import {motion, MotionProps} from 'framer-motion'; // Import motion component and types from Framer Motion
 import React from 'react'; // Import React
 
 // Define the props for the AnimatedSection component

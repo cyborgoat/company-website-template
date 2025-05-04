@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { ProjectCard, ProjectData } from './ProjectCard';
+import {motion} from 'framer-motion';
+import {ProjectCard, ProjectData} from './ProjectCard';
 
 export function ProjectsGridSection({ projects }: { projects: ProjectData[] }) {
   const fadeInUp = {

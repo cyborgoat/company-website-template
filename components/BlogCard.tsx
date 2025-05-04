@@ -1,10 +1,8 @@
 // components/BlogCard.tsx
 'use client';
 
-import Link from 'next/link';
-import Image from 'next/image';
-import type { BlogPostData } from '@/types/content';
-import { ContentCard } from './ContentCard';
+import type {BlogPostData} from '@/types/content';
+import {ContentCard} from './ContentCard';
 
 interface BlogCardProps {
   post: BlogPostData;

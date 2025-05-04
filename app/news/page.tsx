@@ -4,9 +4,9 @@
 
 import React from 'react';
 // Remove unused imports like Link, Button, Card*, Newspaper, Calendar, motion, animations
-import { getSortedNewsData, NewsArticleData } from '@/lib/news'; // Import data fetching function
-import { NewsGrid } from '@/components/NewsGrid'; // Import the new client component
-import { Metadata } from 'next';
+import {getSortedNewsData, NewsArticleData} from '@/lib/news'; // Import data fetching function
+import {NewsGrid} from '@/components/NewsGrid'; // Import the new client component
+import {Metadata} from 'next';
 
 // Optional: Add Metadata for SEO
 export const metadata: Metadata = {

@@ -1,10 +1,8 @@
 // components/NewsCard.tsx
 'use client';
 
-import Link from 'next/link';
-import Image from 'next/image';
-import type { NewsArticleData } from '@/types/content';
-import { ContentCard } from './ContentCard';
+import type {NewsArticleData} from '@/types/content';
+import {ContentCard} from './ContentCard';
 
 interface NewsCardProps {
   article: NewsArticleData;

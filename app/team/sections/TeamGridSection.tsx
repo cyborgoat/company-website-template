@@ -1,4 +1,4 @@
-import { TeamMember, TeamMemberCard } from './TeamMemberCard';
+import {TeamMember, TeamMemberCard} from './TeamMemberCard';
 
 export function TeamGridSection({ groupedMembers, categories }: { groupedMembers: { [key: string]: TeamMember[] }, categories: string[] }) {
   return (

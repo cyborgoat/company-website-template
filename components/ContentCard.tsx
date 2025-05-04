@@ -2,12 +2,12 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Calendar, Clock } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { cardHover, fadeInUp } from '@/lib/animations';
-import type { ContentItem } from '@/types/content';
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from '@/components/ui/card';
+import {Button} from '@/components/ui/button';
+import {Calendar, Clock} from 'lucide-react';
+import {motion} from 'framer-motion';
+import {cardHover, fadeInUp} from '@/lib/animations';
+import type {ContentItem} from '@/types/content';
 
 interface ContentCardProps<T extends ContentItem> {
   item: T;

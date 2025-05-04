@@ -1,9 +1,9 @@
 // Generic ContentGrid for Blog, News, Demo, etc.
 'use client';
-import { motion } from 'framer-motion';
-import { staggerContainer } from '@/lib/animations';
-import type { ContentItem } from '@/types/content';
-import { ContentCard } from './ContentCard';
+import {motion} from 'framer-motion';
+import {staggerContainer} from '@/lib/animations';
+import type {ContentItem} from '@/types/content';
+import {ContentCard} from './ContentCard';
 
 interface ContentGridProps<T extends ContentItem> {
   items: T[];

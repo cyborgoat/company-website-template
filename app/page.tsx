@@ -1,8 +1,8 @@
 import Image from 'next/image'; // Import Next.js Image component for optimized images
 import VideoPlayer from './_components/video-player'; // Import custom VideoPlayer component
 import AnimatedSection from './_components/animated-section'; // Import custom animation wrapper component
-import { Button } from '@/components/ui/button'; // Import Button component from shadcn/ui
-import { ArrowRight } from 'lucide-react'; // Import an icon from lucide-react
+import {Button} from '@/components/ui/button'; // Import Button component from shadcn/ui
+import {ArrowRight} from 'lucide-react'; // Import an icon from lucide-react
 
 // Home page component definition
 export default function Home() {

@@ -2,11 +2,11 @@
 'use client'; // This component uses client-side state and effects
 
 import Link from 'next/link'; // Import Link component for client-side navigation
-import { Button } from '@/components/ui/button'; // Import Button component
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'; // Import Sheet components for mobile drawer menu
-import { Menu, X } from 'lucide-react'; // Import icons for menu toggle
-import { cn } from '@/lib/utils'; // Utility for class names
-import { useState, useEffect } from 'react'; // Import React hooks for state and effects
+import {Button} from '@/components/ui/button'; // Import Button component
+import {Sheet, SheetContent, SheetTrigger} from '@/components/ui/sheet'; // Import Sheet components for mobile drawer menu
+import {Menu, X} from 'lucide-react'; // Import icons for menu toggle
+import {cn} from '@/lib/utils'; // Utility for class names
+import {useEffect, useState} from 'react'; // Import React hooks for state and effects
 
 // Header component definition
 const Header = () => {

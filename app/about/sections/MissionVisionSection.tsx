@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Target, BrainCircuit } from 'lucide-react';
+import {BrainCircuit, Target} from 'lucide-react';
 
 export function MissionVisionSection() {
   return (

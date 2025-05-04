@@ -1,5 +1,5 @@
 import Link from 'next/link'; // Import Link for navigation
-import { Twitter, Linkedin } from 'lucide-react'; // Import social media icons
+import {Linkedin, Twitter} from 'lucide-react'; // Import social media icons
 
 // Footer component definition
 const Footer = () => {

@@ -2,20 +2,15 @@
 'use client'; // Needed for Framer Motion animations
 
 import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image'; // Make sure to import Next.js Image component
-
 // Import necessary shadcn/ui components
 // Ensure you have added these via the CLI: npx shadcn-ui@latest add card button badge
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 // Import icons
-import { ExternalLink, Layers } from 'lucide-react';
 
 // Import framer-motion
-import { motion } from 'framer-motion';
+import {ProjectsIntroSection} from './sections/ProjectsIntroSection';
+import {ProjectsGridSection} from './sections/ProjectsGridSection';
+import type {ProjectData} from './sections/ProjectCard';
 
 // --- Animation Variants ---
 // You can place these here or import them from a shared file like '@/lib/animations'
@@ -45,11 +40,6 @@ const cardHover = {
     transition: { duration: 0.2 }
 };
 // --- End Animation Variants ---
-
-
-import { ProjectsIntroSection } from './sections/ProjectsIntroSection';
-import { ProjectsGridSection } from './sections/ProjectsGridSection';
-import type { ProjectData } from './sections/ProjectCard';
 
 // --- Placeholder Data ---
 const projects: ProjectData[] = [

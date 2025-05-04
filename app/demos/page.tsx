@@ -1,10 +1,10 @@
 // app/demos/page.tsx
 import Link from 'next/link';
 import Image from 'next/image';
-import { Metadata } from 'next';
-import { getSortedDemoData, DemoData } from '@/lib/demos';
-import { cn } from '@/lib/utils';
-import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card'; // Keep 3D card imports
+import {Metadata} from 'next';
+import {DemoData, getSortedDemoData} from '@/lib/demos';
+import {cn} from '@/lib/utils';
+import {CardBody, CardContainer, CardItem} from '@/components/ui/3d-card'; // Keep 3D card imports
 
 // Metadata for the page
 export const metadata: Metadata = {

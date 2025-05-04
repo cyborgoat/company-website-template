@@ -1,10 +1,10 @@
 // app/about/page.tsx
-import { Metadata } from 'next';
-import { AboutHeroSection } from './sections/AboutHeroSection';
-import { MissionVisionSection } from './sections/MissionVisionSection';
-import { ValuesSection } from './sections/ValuesSection';
-import { TeamPreviewSection } from './sections/TeamPreviewSection';
-import { ApproachSection } from './sections/ApproachSection';
+import {Metadata} from 'next';
+import {AboutHeroSection} from './sections/AboutHeroSection';
+import {MissionVisionSection} from './sections/MissionVisionSection';
+import {ValuesSection} from './sections/ValuesSection';
+import {TeamPreviewSection} from './sections/TeamPreviewSection';
+import {ApproachSection} from './sections/ApproachSection';
 
 export const metadata: Metadata = {
   title: 'About Us | Your AI Company',

@@ -1,10 +1,10 @@
 // app/demos/[slug]/page.tsx
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import {Metadata} from 'next';
+import {notFound} from 'next/navigation';
 import Link from 'next/link'; // Import Link component
-import { getDemoData, getAllDemoSlugs, DemoData } from '@/lib/demos';
+import {DemoData, getAllDemoSlugs, getDemoData} from '@/lib/demos';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
-import { Badge } from '@/components/ui/badge';
+import {Badge} from '@/components/ui/badge';
 
 // Generate static paths for all demos at build time
 export async function generateStaticParams() {

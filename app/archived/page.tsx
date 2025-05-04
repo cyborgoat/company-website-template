@@ -3,11 +3,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge"; // Add if needed
-import { Archive } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { fadeIn, fadeInUp, staggerContainer } from '@/lib/animations';
+import {Separator} from "@/components/ui/separator";
+import {Badge} from "@/components/ui/badge"; // Add if needed
+import {motion} from 'framer-motion';
+import {fadeIn, fadeInUp, staggerContainer} from '@/lib/animations';
 
 // Fetch this data from your backend/CMS
 const archivedItems = [

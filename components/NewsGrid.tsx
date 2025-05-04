@@ -1,10 +1,10 @@
 // components/NewsGrid.tsx
 'use client';
 
-import { motion } from 'framer-motion';
-import { staggerContainer } from '@/lib/animations'; // Import animations
-import { NewsArticleData } from '@/lib/news'; // Adjust path
-import { NewsCard } from './NewsCard'; // Adjust path
+import {motion} from 'framer-motion';
+import {staggerContainer} from '@/lib/animations'; // Import animations
+import {NewsArticleData} from '@/lib/news'; // Adjust path
+import {NewsCard} from './NewsCard'; // Adjust path
 
 interface NewsGridProps {
     newsItems: NewsArticleData[];

@@ -2,9 +2,9 @@
 // NO 'use client'; directive here - This is a Server Component
 
 import React from 'react';
-import { getSortedBlogData, BlogPostData } from '@/lib/blogs'; // Import data fetching
-import { BlogGrid } from '@/components/BlogGrid'; // Import client grid component
-import { Metadata } from 'next'; // Import Metadata type
+import {BlogPostData, getSortedBlogData} from '@/lib/blogs'; // Import data fetching
+import {BlogGrid} from '@/components/BlogGrid'; // Import client grid component
+import {Metadata} from 'next'; // Import Metadata type
 
 // Add Metadata for SEO - This is allowed in Server Components
 export const metadata: Metadata = {

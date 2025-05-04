@@ -1,5 +1,5 @@
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { CheckCircle, Lightbulb, Users } from 'lucide-react';
+import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
+import {CheckCircle, Lightbulb, Users} from 'lucide-react';
 
 export function ValuesSection() {
   return (

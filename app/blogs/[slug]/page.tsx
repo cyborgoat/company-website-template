@@ -2,9 +2,9 @@
 
 import MarkdownRenderer from '@/components/MarkdownRenderer'; // Adjust path if necessary
 // Assume you create lib/blogs.ts similar to lib/news.ts
-import { getAllBlogSlugs, getBlogData, BlogPostData } from '@/lib/blogs'; // Adjust paths/names if necessary
-import { notFound } from 'next/navigation';
-import { Metadata, ResolvingMetadata } from 'next';
+import {BlogPostData, getAllBlogSlugs, getBlogData} from '@/lib/blogs'; // Adjust paths/names if necessary
+import {notFound} from 'next/navigation';
+import {Metadata, ResolvingMetadata} from 'next';
 import Link from 'next/link';
 
 // Define a type for your blog post data (similar to NewsArticleData)

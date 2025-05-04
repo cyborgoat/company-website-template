@@ -1,9 +1,9 @@
 // app/news/[slug]/page.tsx
 
 import MarkdownRenderer from '@/components/MarkdownRenderer'; // Adjust path if necessary
-import { getAllNewsSlugs, getNewsData, NewsArticleData } from '@/lib/news'; // Adjust path if necessary
-import { notFound } from 'next/navigation';
-import { Metadata, ResolvingMetadata } from 'next';
+import {getAllNewsSlugs, getNewsData, NewsArticleData} from '@/lib/news'; // Adjust path if necessary
+import {notFound} from 'next/navigation';
+import {Metadata, ResolvingMetadata} from 'next';
 import Link from 'next/link';
 
 interface NewsArticleProps {
