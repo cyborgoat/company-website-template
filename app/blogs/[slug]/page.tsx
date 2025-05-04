@@ -19,9 +19,9 @@ interface BlogPostData {
 
 // Define props type
 interface BlogPostPageProps {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 }
 
 // Add generateStaticParams for blogs
@@ -32,10 +32,8 @@ export async function generateStaticParams() {
 }
 
 // Add generateMetadata for blogs
-export async function generateMetadata(
-    { params }: BlogPostPageProps,
-    parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(props: BlogPostPageProps, parent: ResolvingMetadata): Promise<Metadata> {
+    const params = await props.params;
     const slug = params.slug;
     try {
         // Assumes getBlogData exists in lib/blogs.ts
@@ -55,7 +53,8 @@ export async function generateMetadata(
 }
 
 // Update the main component
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
+export default async function BlogPostPage(props: BlogPostPageProps) {
+    const params = await props.params;
     const slug = params.slug;
     let post: BlogPostData;
 
@@ -72,7 +71,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <article className="container mx-auto max-w-3xl py-12">
             {/* Consistent title structure */}
             <h1 className="text-center text-4xl md:text-5xl font-bold mb-8">{post.title}</h1>
-
             {/* Consistent Markdown rendering */}
             {post.markdownContent ? (
                 <MarkdownRenderer>
@@ -81,7 +79,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             ) : (
                 <p className="text-center text-muted-foreground">Blog post content is missing.</p>
             )}
-
             {/* Consistent Back link */}
             <div className="mt-12 text-center">
                 <Link href="/blogs" className="text-sm text-muted-foreground hover:text-primary transition-colors">

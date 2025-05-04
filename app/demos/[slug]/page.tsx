@@ -13,7 +13,8 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata specific to this demo page
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const params = await props.params;
     try {
         const demo = await getDemoData(params.slug);
         return {
@@ -36,7 +37,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 
 // The main page component
-export default async function DemoDetailPage({ params }: { params: { slug: string } }) {
+export default async function DemoDetailPage(props: { params: Promise<{ slug: string }> }) {
+    const params = await props.params;
     let demo: DemoData;
 
     try {
@@ -49,6 +51,7 @@ export default async function DemoDetailPage({ params }: { params: { slug: strin
     // Render the page
     return (
         // The main article container
+        // End of main article container
         <article className="container mx-auto px-4 py-12 md:py-16 max-w-4xl">
             {/* Header section */}
             <header className="mb-8 md:mb-12 border-b pb-6">
@@ -68,7 +71,6 @@ export default async function DemoDetailPage({ params }: { params: { slug: strin
                     </div>
                 )}
             </header>
-
             {/* Video Embed Section - Conditionally rendered */}
             {demo.videoUrl && (
                 <section className="mb-8 md:mb-12">
@@ -85,7 +87,6 @@ export default async function DemoDetailPage({ params }: { params: { slug: strin
                     </div>
                 </section>
             )}
-
             {/* Markdown Content Section */}
             <section className="mb-12"> {/* Added margin-bottom here */}
                 {demo.markdownContent ? (
@@ -96,14 +97,12 @@ export default async function DemoDetailPage({ params }: { params: { slug: strin
                     <p className="text-muted-foreground">No further details available for this demo.</p>
                 )}
             </section>
-
             <div className="mt-12 text-center"> {/* Use mt-12 for spacing */}
                 <Link href="/demos" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     {/* Use HTML arrow entity */}
                     &larr; Back to All Demos
                 </Link>
             </div>
-
-        </article> // End of main article container
+        </article>
     );
 }

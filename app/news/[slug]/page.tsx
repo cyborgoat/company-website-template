@@ -7,9 +7,9 @@ import { Metadata, ResolvingMetadata } from 'next';
 import Link from 'next/link';
 
 interface NewsArticleProps {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 }
 
 export async function generateStaticParams() {
@@ -17,10 +17,8 @@ export async function generateStaticParams() {
     return paths;
 }
 
-export async function generateMetadata(
-    { params }: NewsArticleProps,
-    parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(props: NewsArticleProps, parent: ResolvingMetadata): Promise<Metadata> {
+    const params = await props.params;
     const slug = params.slug;
     try {
         const article = await getNewsData(slug);
@@ -37,7 +35,8 @@ export async function generateMetadata(
     }
 }
 
-export default async function NewsArticle({ params }: NewsArticleProps) {
+export default async function NewsArticle(props: NewsArticleProps) {
+    const params = await props.params;
     const slug = params.slug;
     let article: NewsArticleData;
 
