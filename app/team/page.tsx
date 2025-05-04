@@ -1,29 +1,8 @@
 // app/team/page.tsx
-import Image from 'next/image';
-import Link from 'next/link';
 import { Metadata } from 'next';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Linkedin, Github, Twitter, Globe } from 'lucide-react';
-import { cn } from '@/lib/utils';
-
-// Define the structure for a team member
-interface TeamMember {
-    id: string;
-    name: string;
-    title: string;
-    imageUrl?: string;
-    bio?: string;
-    expertise?: string[];
-    socials?: {
-        linkedin?: string;
-        github?: string;
-        twitter?: string;
-        website?: string;
-    };
-    category?: 'Leadership' | 'Research' | 'Engineering' | 'Design' | 'Operations';
-}
+import { TeamIntroSection } from './sections/TeamIntroSection';
+import { TeamGridSection } from './sections/TeamGridSection';
+import type { TeamMember } from './sections/TeamMemberCard';
 
 // Your team data
 const teamMembers: TeamMember[] = [
@@ -100,52 +79,22 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
 }
 
 
-// Main Page Component
 export default function TeamPage() {
-    const categories = ['Leadership', 'Research', 'Engineering', 'Design', 'Operations'];
-    const groupedMembers: { [key: string]: TeamMember[] } = {};
+  const categories = ['Leadership', 'Research', 'Engineering', 'Design', 'Operations'];
+  const groupedMembers: { [key: string]: TeamMember[] } = {};
 
-    teamMembers.forEach(member => {
-        const category = member.category || 'Other';
-        if (!groupedMembers[category]) {
-            groupedMembers[category] = [];
-        }
-        groupedMembers[category].push(member);
-    });
+  teamMembers.forEach(member => {
+    const category = member.category || 'Other';
+    if (!groupedMembers[category]) {
+      groupedMembers[category] = [];
+    }
+    groupedMembers[category].push(member);
+  });
 
-    return (
-        <main className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
-            <div className="text-center mb-12 md:mb-16">
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-                    Meet Our Team
-                </h1>
-                <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-                    Driving innovation in AI with expertise, passion, and collaboration.
-                </p>
-            </div>
-
-            {categories.map(category => (
-                groupedMembers[category] && groupedMembers[category].length > 0 && (
-                    <section key={category} className="mb-12 md:mb-16">
-                        <h2 className="text-2xl md:text-3xl font-semibold mb-6 md:mb-8 text-center border-b pb-3">{category}</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-                            {groupedMembers[category].map((member) => (
-                                <TeamMemberCard key={member.id} member={member} />
-                            ))}
-                        </div>
-                    </section>
-                )
-            ))}
-            {groupedMembers['Other'] && groupedMembers['Other'].length > 0 && (
-                <section className="mb-12 md:mb-16">
-                    <h2 className="text-2xl md:text-3xl font-semibold mb-6 md:mb-8 text-center border-b pb-3">Team</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-                        {groupedMembers['Other'].map((member) => (
-                            <TeamMemberCard key={member.id} member={member} />
-                        ))}
-                    </div>
-                </section>
-            )}
-        </main>
-    );
+  return (
+    <main className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
+      <TeamIntroSection />
+      <TeamGridSection groupedMembers={groupedMembers} categories={categories} />
+    </main>
+  );
 }
