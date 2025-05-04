@@ -2,59 +2,114 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
-import { getSortedDemoData, DemoData } from '@/lib/demos'; // Import demo data functions
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { getSortedDemoData, DemoData } from '@/lib/demos';
 import { cn } from '@/lib/utils';
+import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card'; // Keep 3D card imports
 
 // Metadata for the page
 export const metadata: Metadata = {
-    title: 'Product Demos | Your Company Name', // Customize your company name
+    title: 'Product Demos | Your Company Name',
     description: 'Explore interactive demos showcasing our products and features.',
 };
 
-// Reusable Demo Card Component (Displays title, excerpt, thumbnail, tags)
+// DemoCard component (using 3D card components)
 function DemoCard({ demo }: { demo: DemoData }) {
     return (
-        <Link href={`/demos/${demo.slug}`} className="block group h-full"> {/* Ensure links point to /demos/... */}
-            <Card className="h-full flex flex-col transition-shadow duration-200 hover:shadow-lg dark:hover:shadow-primary/20 overflow-hidden"> {/* Added overflow-hidden */}
+        // Using CardContainer for 3D effect - No changes needed here
+        <CardContainer className="inter-var h-full">
+            {/* Applying specific border/hover fixes directly here as per your last successful fix */}
+            <CardBody className={cn(
+                "h-full flex flex-col", // Base layout
+                "border-2 border-gray-600/60 hover:border-gray-500/80", // Your border fix + slightly lighter hover
+                // Add back base styling if needed, or ensure CardBody in 3d-card.tsx has them
+                "bg-background rounded-xl dark:hover:shadow-xl dark:hover:shadow-primary/[0.15] hover:shadow-lg hover:brightness-[1.02] transition-all duration-300 p-6" // Example base + hover effects
+                // Note: The shining border effect from 3d-card.tsx might conflict if added here AND in the component file. Choose one place.
+                // If you want the shining border, remove the border classes above and rely on the CardBody component's internal styles.
+                // If you prefer this simpler border, ensure the border/before styles in 3d-card.tsx CardBody are removed or adjusted.
+            )}>
+                {/* CardItem for Title */}
+                <CardItem
+                    translateZ="50"
+                    className="text-xl font-bold text-foreground"
+                >
+                    {demo.title}
+                </CardItem>
+
+                {/* CardItem for Excerpt */}
+                {demo.excerpt && (
+                    <CardItem
+                        as="p"
+                        translateZ="60"
+                        className="text-muted-foreground text-sm max-w-sm mt-2 line-clamp-3"
+                    >
+                        {demo.excerpt}
+                    </CardItem>
+                )}
+
+                {/* CardItem for Thumbnail */}
                 {demo.thumbnail && (
-                    <div className="relative w-full aspect-video"> {/* Aspect ratio for consistency */}
+                    <CardItem
+                        translateZ="80"
+                        className="w-full mt-4 aspect-video relative"
+                    >
                         <Image
                             src={demo.thumbnail}
                             alt={`${demo.title} thumbnail`}
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                            className="object-cover rounded-xl"
                         />
-                    </div>
+                    </CardItem>
                 )}
-                {/* Apply top rounding if no image */}
-                <CardHeader className={cn(!demo.thumbnail && "rounded-t-lg")}>
-                    <CardTitle className="group-hover:text-primary transition-colors">{demo.title}</CardTitle>
-                    {demo.excerpt && (
-                        <CardDescription className="mt-2 line-clamp-3">{demo.excerpt}</CardDescription>
-                    )}
-                </CardHeader>
-                {/* Use mt-auto to push tags towards the bottom */}
-                <CardContent className="mt-auto pt-2 flex flex-col justify-end"> {/* Adjusted for flex */}
+
+                {/* Container for bottom content (tags + link) */}
+                <div className="mt-auto pt-4">
+                    {/* CardItem for Tags - UPDATED STYLING */}
                     {demo.tags && Array.isArray(demo.tags) && demo.tags.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mt-4">
+                        <div className="flex flex-wrap gap-2 mb-4">
                             {demo.tags.map((tag: string) => (
-                                <Badge key={tag} variant="secondary">{tag}</Badge>
+                                <CardItem
+                                    key={tag}
+                                    translateZ={20} // Keep the 3D effect for tags
+                                    as="div"
+                                    // ***** UPDATED TAG CLASSES *****
+                                    className={cn(
+                                        "inline-block rounded-full px-3 py-1 text-xs font-medium", // Shape, size, weight
+                                        "border", // Add base border class
+                                        "bg-neutral-800/80", // Slightly transparent dark gray background
+                                        "border-neutral-700", // Darker gray border
+                                        "text-neutral-400" // Lighter gray text
+                                        // You could add hover states here too if desired, e.g.:
+                                        // "hover:bg-neutral-700/90 hover:border-neutral-500 hover:text-neutral-300 transition-colors"
+                                    )}
+                                    // ******************************
+                                >
+                                    {tag}
+                                </CardItem>
                             ))}
                         </div>
                     )}
-                </CardContent>
-            </Card>
-        </Link>
+
+                    {/* CardItem for Link */}
+                    <div className="flex justify-end items-center">
+                        <CardItem
+                            translateZ={20}
+                            as={Link}
+                            href={`/demos/${demo.slug}`}
+                            className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white hover:text-primary transition-colors"
+                        >
+                            Learn more →
+                        </CardItem>
+                    </div>
+                </div>
+            </CardBody>
+        </CardContainer>
     );
 }
 
 
-// Main Page Component - Fetches and displays the grid of DemoCards
+// Main Page Component - No changes needed here
 export default function DemosPage() {
-    // Fetch sorted demo data using the function from lib/demos.ts
     const demos = getSortedDemoData();
 
     return (
@@ -68,8 +123,7 @@ export default function DemosPage() {
                     No demos available yet. Check back soon!
                 </p>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    {/* Map over the fetched demos and render a card for each */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-6 lg:gap-x-12">
                     {demos.map((demo) => (
                         <DemoCard key={demo.slug} demo={demo} />
                     ))}
