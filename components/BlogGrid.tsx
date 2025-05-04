@@ -1,14 +1,6 @@
-// components/BlogGrid.tsx
-'use client';
-
-import type {BlogPostData} from '@/types/content';
-import {ContentGrid} from './ContentGrid';
-
-interface BlogGridProps {
-  posts: BlogPostData[];
-}
-
-export function BlogGrid({ posts }: BlogGridProps) {
+import { ContentGrid } from './ContentGrid';
+import type { BlogPostData } from '@/types/content';
+export function BlogGrid({ posts }: { posts: BlogPostData[] }) {
   return (
     <ContentGrid
       items={posts}

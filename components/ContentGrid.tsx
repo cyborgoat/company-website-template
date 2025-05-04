@@ -30,9 +30,9 @@ export function ContentGrid<T extends ContentItem>({
       animate="visible"
     >
       {items.length > 0 ? (
-        items.map((item) => (
+        items.map((item, idx) => (
           <ContentCard
-            key={item.slug}
+            key={`${item.slug}-${idx}`}
             item={item}
             href={`/${hrefPrefix}/${item.slug}`}
             showReadTime={showReadTime}

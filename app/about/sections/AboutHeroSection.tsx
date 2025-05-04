@@ -9,7 +9,6 @@ export function AboutHeroSection() {
       <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
         We are [Your AI Company Name], dedicated to building intelligent solutions that solve complex challenges and create new possibilities.
       </p>
-      {/* Optional Hero Image */}
       <div className="mt-10 relative w-full max-w-4xl mx-auto aspect-[21/9] rounded-lg overflow-hidden shadow-lg">
         <Image
           src="/images/about/robot.avif"
