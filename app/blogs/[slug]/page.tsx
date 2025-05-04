@@ -7,16 +7,6 @@ import {notFound} from 'next/navigation';
 import {Metadata, ResolvingMetadata} from 'next';
 import Link from 'next/link';
 
-// Define a type for your blog post data (similar to NewsArticleData)
-interface BlogPostData {
-    slug: string;
-    title: string;
-    date?: string; // Optional date
-    excerpt?: string; // Optional excerpt
-    markdownContent?: string;
-    [key: string]: any; // Allow other frontmatter
-}
-
 // Define props type
 interface BlogPostPageProps {
     params: Promise<{
