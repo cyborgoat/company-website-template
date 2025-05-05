@@ -1,10 +1,10 @@
-import type {Metadata} from "next";
-import {Inter} from "next/font/google"; // Import the Inter font from next/font
+import type { Metadata } from "next";
+import { Inter } from "next/font/google"; // Import the Inter font from next/font
 import "@/app/globals.css"; // Import the global stylesheet
-import {cn} from "@/lib/utils"; // Import utility for combining class names
+import { cn } from "@/lib/utils"; // Import utility for combining class names
 import Header from "./_components/header"; // Import the site header component
 import Footer from "./_components/footer"; // Import the site footer component
-import {ThemeProvider} from "@/components/theme-provider"; // Import theme provider from shadcn/ui setup
+import { ThemeProvider } from "@/components/theme-provider"; // Import theme provider from shadcn/ui setup
 
 // Initialize the Inter font with desired subsets and define a CSS variable
 const inter = Inter({
@@ -12,42 +12,37 @@ const inter = Inter({
     variable: "--font-sans", // Will be used in tailwind.config.ts
 });
 
-// Define metadata for the application (used in <head>)
 export const metadata: Metadata = {
-    title: "Company Awesome", // Site title
-    description: "Company Website Template", // Site description
+    title: "Company Awesome",
+    description: "Company Website Template",
 };
 
-// Root layout component
 export default function RootLayout({
-                                       children, // Represents the content of the current page
-                                   }: Readonly<{
+    children,
+}: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
-        // Define the root HTML element
-        <html lang="en" suppressHydrationWarning> {/* suppressHydrationWarning is often needed with next-themes */}
-        {/* Define the body element */}
-        <body
-            className={cn(
-                // Apply base styles: minimum height, background, text color, font, anti-aliasing
-                "min-h-screen bg-background text-foreground font-sans antialiased",
-                inter.variable // Apply the CSS variable for the Inter font
-            )}
-        >
-        {/* Wrap the application with the ThemeProvider for dark/light mode handling */}
-        <ThemeProvider
-            attribute="class" // Use class-based theme switching
-            defaultTheme="dark" // Set dark theme as the default
-            enableSystem={false} // Disable system preference detection (force dark)
-            disableTransitionOnChange // Prevent theme transition flashes
-        >
-            <Header/> {/* Render the site header */}
-            <main className="flex-grow">{children}</main>
-            {/* Render the page content, allowing it to grow */}
-            <Footer/> {/* Render the site footer */}
-        </ThemeProvider>
-        </body>
+        <html lang="en" suppressHydrationWarning>
+            <body
+                className={cn(
+                    "min-h-screen bg-background text-foreground font-sans antialiased",
+                    inter.variable
+                )}
+            >
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="dark"
+                    enableSystem={false}
+                    disableTransitionOnChange
+                >
+                    <div className="flex flex-col min-h-screen">
+                        <Header />
+                        <main className="flex-grow flex flex-col">{children}</main>
+                    </div>
+                    <Footer />
+                </ThemeProvider>
+            </body>
         </html>
     );
 }
