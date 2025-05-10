@@ -8,15 +8,14 @@ import {Badge} from '@/components/ui/badge';
 
 // Generate static paths for all demos at build time
 export async function generateStaticParams() {
-    const slugs = getAllDemoSlugs();
-    return slugs;
+    return getAllDemoSlugs().map(({ params }) => params);
 }
 
 // Generate metadata specific to this demo page
-export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-    const params = await props.params;
+export async function generateMetadata(props: { params: { slug: string } }): Promise<Metadata> {
+    const { slug } = props.params;
     try {
-        const demo = await getDemoData(params.slug);
+        const demo = await getDemoData(slug);
         return {
             title: `${demo.title} | Demo`,
             description: demo.excerpt || `View the demo for ${demo.title}.`,
@@ -37,14 +36,14 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
 
 
 // The main page component
-export default async function DemoDetailPage(props: { params: Promise<{ slug: string }> }) {
-    const params = await props.params;
+export default async function DemoDetailPage(props: { params: { slug: string } }) {
+    const { slug } = props.params;
     let demo: DemoData;
 
     try {
-        demo = await getDemoData(params.slug);
+        demo = await getDemoData(slug);
     } catch (error) {
-        console.error(`Error fetching demo data for slug "${params.slug}":`, error);
+        console.error(`Error fetching demo data for slug "${slug}":`, error);
         notFound();
     }
 
