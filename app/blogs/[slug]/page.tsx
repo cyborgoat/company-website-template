@@ -9,22 +9,19 @@ import Link from 'next/link';
 
 // Define props type
 interface BlogPostPageProps {
-    params: Promise<{
+    params: {
         slug: string;
-    }>;
+    };
 }
 
 // Add generateStaticParams for blogs
 export async function generateStaticParams() {
-    // Assumes getAllBlogSlugs exists in lib/blogs.ts
-    const paths = getAllBlogSlugs();
-    return paths;
+    return getAllBlogSlugs().map(({ params }) => params);
 }
 
 // Add generateMetadata for blogs
-export async function generateMetadata(props: BlogPostPageProps): Promise<Metadata> {
-    const params = await props.params;
-    const slug = params.slug;
+export async function generateMetadata(props: { params: { slug: string } }): Promise<Metadata> {
+    const { slug } = props.params;
     try {
         // Assumes getBlogData exists in lib/blogs.ts
         const post = await getBlogData(slug);
@@ -43,9 +40,8 @@ export async function generateMetadata(props: BlogPostPageProps): Promise<Metada
 }
 
 // Update the main component
-export default async function BlogPostPage(props: BlogPostPageProps) {
-    const params = await props.params;
-    const slug = params.slug;
+export default async function BlogPostPage(props: { params: { slug: string } }) {
+    const { slug } = props.params;
     let post: BlogPostData;
 
     try {
