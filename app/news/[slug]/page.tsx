@@ -5,19 +5,17 @@ import {Metadata} from 'next';
 import Link from 'next/link';
 
 interface NewsArticleProps {
-    params: Promise<{
+    params: {
         slug: string;
-    }>;
+    };
 }
 
 export async function generateStaticParams() {
-    const paths = getAllNewsSlugs();
-    return paths;
+    return getAllNewsSlugs().map(({ params }) => params);
 }
 
 export async function generateMetadata(props: NewsArticleProps): Promise<Metadata> {
-    const params = await props.params;
-    const slug = params.slug;
+    const { slug } = props.params;
     try {
         const article = await getNewsData(slug);
         return {
@@ -34,8 +32,7 @@ export async function generateMetadata(props: NewsArticleProps): Promise<Metadat
 }
 
 export default async function NewsArticle(props: NewsArticleProps) {
-    const params = await props.params;
-    const slug = params.slug;
+    const { slug } = props.params;
     let article: NewsArticleData;
 
     try {
