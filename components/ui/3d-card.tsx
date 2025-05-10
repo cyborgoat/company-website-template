@@ -1,4 +1,3 @@
-// components/ui/3d-card.tsx
 "use client";
 
 import {cn} from "@/lib/utils"; // Assuming you have this utility
@@ -143,6 +142,7 @@ type CardItemProps = {
     rotateY?: number | string;
     rotateZ?: number | string;
     // Ensure any custom props needed by 'as' components (like href for Link) are allowed
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [key: string]: any; // Allow other props like href, target, etc.
 } & MotionProps; // Include MotionProps for motion-specific attributes
 
