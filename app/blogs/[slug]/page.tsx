@@ -4,7 +4,7 @@ import MarkdownRenderer from '@/components/MarkdownRenderer'; // Adjust path if 
 // Assume you create lib/blogs.ts similar to lib/news.ts
 import {BlogPostData, getAllBlogSlugs, getBlogData} from '@/lib/blogs'; // Adjust paths/names if necessary
 import {notFound} from 'next/navigation';
-import {Metadata, ResolvingMetadata} from 'next';
+import {Metadata} from 'next';
 import Link from 'next/link';
 
 // Define props type
@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 }
 
 // Add generateMetadata for blogs
-export async function generateMetadata(props: BlogPostPageProps, parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata(props: BlogPostPageProps): Promise<Metadata> {
     const params = await props.params;
     const slug = params.slug;
     try {

@@ -1,5 +1,5 @@
 // lib/blogs.ts
-
+// eslint-disable @typescript-eslint/no-explicit-any
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter'; // Parses frontmatter from markdown
@@ -13,7 +13,7 @@ export interface BlogPostData {
     excerpt?: string;   // Optional short summary from frontmatter
     image?: string;     // Optional image path from frontmatter
     markdownContent?: string; // Raw Markdown content of the blog post body
-    [key: string]: any; // Allow other custom frontmatter fields
+    [key: string]: unknown; // Allow other custom frontmatter fields
 }
 
 // Define the directory where blog markdown files are stored

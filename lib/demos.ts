@@ -1,5 +1,5 @@
 // lib/demos.ts
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter'; // Parses frontmatter from markdown
@@ -12,8 +12,9 @@ export interface DemoData {
     thumbnail?: string;      // Optional path to a thumbnail image
     videoUrl?: string;       // Optional URL for an embedded video (e.g., YouTube embed URL)
     markdownContent?: string;// Raw Markdown content of the demo description/details
+    tags?: string[];         // Optional tags for categorization
     order?: number;          // Optional field to control display order on the listing page
-    [key: string]: any;      // Allow other custom frontmatter fields
+    [key: string]: unknown;  // Allow other custom frontmatter fields
 }
 
 // Define the directory where demo markdown files are stored
@@ -56,6 +57,7 @@ export function getSortedDemoData(): DemoData[] {
                     excerpt: matterResult.data.excerpt || undefined,
                     thumbnail: matterResult.data.thumbnail || undefined,
                     videoUrl: matterResult.data.videoUrl || undefined,
+                    tags: matterResult.data.tags || undefined,
                     order: matterResult.data.order, // Keep as undefined if not present
                     ...matterResult.data,
                 };
@@ -147,6 +149,7 @@ export async function getDemoData(slug: string): Promise<DemoData> {
             excerpt: matterResult.data.excerpt || undefined, // Optional field
             thumbnail: matterResult.data.thumbnail || undefined, // Optional field
             videoUrl: matterResult.data.videoUrl || undefined, // Optional field
+            tags: matterResult.data.tags || undefined, // Optional field
             order: matterResult.data.order || undefined, // Optional field
             ...matterResult.data,
         };

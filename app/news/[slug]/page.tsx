@@ -1,9 +1,7 @@
-// app/news/[slug]/page.tsx
-
 import MarkdownRenderer from '@/components/MarkdownRenderer'; // Adjust path if necessary
 import {getAllNewsSlugs, getNewsData, NewsArticleData} from '@/lib/news'; // Adjust path if necessary
 import {notFound} from 'next/navigation';
-import {Metadata, ResolvingMetadata} from 'next';
+import {Metadata} from 'next';
 import Link from 'next/link';
 
 interface NewsArticleProps {
@@ -17,7 +15,7 @@ export async function generateStaticParams() {
     return paths;
 }
 
-export async function generateMetadata(props: NewsArticleProps, parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata(props: NewsArticleProps): Promise<Metadata> {
     const params = await props.params;
     const slug = params.slug;
     try {

@@ -12,7 +12,7 @@ export interface NewsArticleData {
     excerpt: string;    // Short summary from frontmatter
     image?: string;     // Optional image path from frontmatter
     markdownContent?: string; // Raw Markdown content of the article body
-    [key: string]: any; // Allow other custom frontmatter fields
+    [key: string]: unknown; // Allow other custom frontmatter fields
 }
 
 // Define the directory where news markdown files are stored

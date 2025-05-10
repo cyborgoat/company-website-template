@@ -27,7 +27,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
                 type: 'article',
             },
         };
-    } catch (error) {
+    } catch {
         return {
             title: 'Demo Not Found',
             description: 'The demo you are looking for could not be found.',
