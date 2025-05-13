@@ -5,6 +5,7 @@ import {Sheet, SheetContent, SheetTrigger} from '@/components/ui/sheet';
 import {Menu, X} from 'lucide-react';
 import {cn} from '@/lib/utils';
 import {useEffect, useState} from 'react';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
     const [hasScrolled, setHasScrolled] = useState(false);
@@ -40,7 +41,7 @@ const Header = () => {
                 <Link href="/" className="mr-6 flex items-center space-x-2" onClick={() => setIsMobileMenuOpen(false)}>
                     <span className={cn(
                         "font-bold sm:inline-block text-xl tracking-tight transition-colors",
-                        hasScrolled ? "text-foreground" : "text-white"
+                        hasScrolled ? "text-foreground" : "text-foreground"
                     )}>
                         Company Awesome
                     </span>
@@ -52,12 +53,13 @@ const Header = () => {
                             href={link.href}
                             className={cn(
                                 "transition-colors hover:text-foreground/80",
-                                hasScrolled ? "text-foreground/60" : "text-gray-200 hover:text-white"
+                                hasScrolled ? "text-foreground/60" : "text-foreground/80 hover:text-foreground"
                             )}
                         >
                             {link.label}
                         </Link>
                     ))}
+                    <ThemeToggle />
                 </nav>
                 <div className="md:hidden">
                     <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -76,6 +78,7 @@ const Header = () => {
                         </SheetTrigger>
                         <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background p-6 border-l border-border/40">
                             <div className="mt-8 flex flex-col space-y-4">
+                                <ThemeToggle />
                                 {navLinks.map((link) => (
                                     <Link
                                         key={link.href}
