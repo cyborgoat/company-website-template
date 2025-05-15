@@ -4,7 +4,8 @@
 
 import React from 'react';
 // Remove unused imports like Link, Button, Card*, Newspaper, Calendar, motion, animations
-import {getSortedNewsData, NewsArticleData} from '@/lib/news'; // Import data fetching function
+import { NewsArticleData } from '@/types/content'; // Corrected import for NewsArticleData
+import { getSortedNewsArticles } from '@/lib/news'; // Import data fetching function
 import {NewsGrid} from '@/components/NewsGrid'; // Import the new client component
 import {Metadata} from 'next';
 
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function NewsPage() {
     // Fetch data on the server
-    const allNews: NewsArticleData[] = getSortedNewsData();
+    const allNews: NewsArticleData[] = getSortedNewsArticles();
 
     return (
         // Keep your main layout and intro text
