@@ -2,9 +2,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import {Metadata} from 'next';
-import {DemoData, getSortedDemoData} from '@/lib/demos';
+import {getSortedDemoData} from '@/lib/demos';
 import {cn} from '@/lib/utils';
 import {CardBody, CardContainer, CardItem} from '@/components/ui/3d-card'; // Keep 3D card imports
+import { DemoData } from '@/types/content'; // Ensure this path is correct
 
 // Metadata for the page
 export const metadata: Metadata = {
