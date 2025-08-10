@@ -34,13 +34,11 @@ const projects: ProjectData[] = [
 
 export default function ProjectsPage() {
   return (
-    <main className="mx-auto max-w-screen-2xl px-4 md:px-6 py-12 md:py-16 lg:py-20">
+    <main className="mx-auto max-w-screen-xl px-4 md:px-6 py-12 md:py-16 lg:py-20 space-y-16 md:space-y-20">
       <ProjectsIntroSection />
       <ProjectsGridSection projects={projects} />
       {projects.length === 0 && (
-        <p className="text-center text-muted-foreground mt-12">
-          More projects coming soon!
-        </p>
+        <p className="text-center text-muted-foreground">More projects coming soon!</p>
       )}
     </main>
   );

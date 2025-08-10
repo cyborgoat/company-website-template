@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="mx-auto max-w-screen-2xl px-4 md:px-6 py-12 md:py-16 lg:py-20">
+    <main className="mx-auto max-w-screen-xl px-4 md:px-6 py-12 md:py-16 lg:py-20 space-y-16 md:space-y-24 lg:space-y-28">
       <AboutHeroSection />
       <MissionVisionSection />
       <ValuesSection />

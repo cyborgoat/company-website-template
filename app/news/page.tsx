@@ -15,18 +15,13 @@ export default function NewsPage() {
     const allNews: NewsArticleData[] = getSortedNewsArticles();
 
     return (
-        // Keep your main layout and intro text
-        <main className="mx-auto max-w-screen-2xl px-4 md:px-6 py-12 md:py-16 lg:py-20"> {/* Unified container */}
-            <h1 className="text-4xl font-bold text-center mb-4">Latest News</h1>
-            <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+        <main className="mx-auto max-w-screen-xl px-4 md:px-6 py-12 md:py-16 lg:py-20">
+            <h1 className="text-4xl font-bold text-center mb-4 text-balance">Latest News</h1>
+            <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto text-balance">
                 Stay updated with our latest announcements and company news.
             </p>
 
-            {/* Render the client component, passing the fetched data */}
             <NewsGrid newsItems={allNews} />
-
-            {/* The comment below is still relevant */}
-            {/* Remember to create app/news/[slug]/page.tsx if needed */}
         </main>
     );
 }
