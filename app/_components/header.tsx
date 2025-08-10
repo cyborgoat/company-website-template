@@ -45,10 +45,7 @@ const Header = () => {
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <span
-            className={cn(
-              "font-bold sm:inline-block text-xl tracking-tight transition-colors",
-              hasScrolled ? "text-foreground" : "text-white"
-            )}
+            className="font-bold sm:inline-block text-xl tracking-tight transition-colors text-foreground"
           >
             Company Awesome
           </span>
@@ -58,12 +55,7 @@ const Header = () => {
             <Link
               key={link.href}
               href={link.href}
-              className={cn(
-                "transition-colors hover:text-foreground/80",
-                hasScrolled
-                  ? "text-foreground/60"
-                  : "text-gray-200 hover:text-white"
-              )}
+              className="text-muted-foreground hover:text-foreground transition-colors"
             >
               {link.label}
             </Link>
@@ -73,18 +65,13 @@ const Header = () => {
           <div className="hidden md:block">
             <ThemeToggle />
           </div>
-          <div className="md:hidden">
+    <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className={cn(
-                    "hover:bg-white/10",
-                    hasScrolled
-                      ? "text-foreground hover:bg-accent"
-                      : "text-white hover:text-white"
-                  )}
+      className="text-foreground hover:bg-accent"
                   aria-label="Toggle Menu"
                 >
                   {isMobileMenuOpen ? (
