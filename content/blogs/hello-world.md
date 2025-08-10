@@ -3,7 +3,7 @@ title: "Hello World! Our Blog is Live"
 date: "2025-04-20"
 excerpt: "Welcome to our new company blog! We're excited to share insights, updates, and stories with you."
 # image: "/images/blog/hello.jpg" # Optional: Add an image path if you have one
-author: "Jane Doe" # Example of another custom field you might add
+ author: "Jane Doe" # Example of another custom field you might add
 ---
 
 Welcome everyone!

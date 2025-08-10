@@ -34,7 +34,7 @@ const projects: ProjectData[] = [
 
 export default function ProjectsPage() {
   return (
-    <main className="container mx-auto px-4 py-16">
+    <main className="mx-auto max-w-screen-2xl px-4 md:px-6 py-12 md:py-16 lg:py-20">
       <ProjectsIntroSection />
       <ProjectsGridSection projects={projects} />
       {projects.length === 0 && (

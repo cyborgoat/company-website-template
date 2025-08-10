@@ -4,6 +4,7 @@ date: "2025-05-04"
 excerpt: "Explore practical demos and use cases for Hugging Face Transformers in NLP."
 slug: "huggingface-transformers-demo"
 image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg"
+author: "Alex Chen"
 ---
 
 ## Hugging Face Transformers in Action

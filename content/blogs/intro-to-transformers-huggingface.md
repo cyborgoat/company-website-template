@@ -4,6 +4,7 @@ date: "2025-05-04"
 excerpt: "A beginner-friendly guide to understanding Transformer models and using Hugging Face for NLP tasks."
 slug: "intro-to-transformers-huggingface"
 image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg"
+author: "Samira Patel"
 ---
 
 ## What are Transformers?
