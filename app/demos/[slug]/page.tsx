@@ -2,7 +2,8 @@
 import {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import Link from 'next/link'; // Import Link component
-import {DemoData, getAllDemoSlugs, getDemoData} from '@/lib/demos';
+import { DemoData } from '@/types/content'; // Corrected import for DemoData
+import { getAllDemoSlugs, getDemoData } from '@/lib/demos'; // Import data fetching functions
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 import {Badge} from '@/components/ui/badge';
 

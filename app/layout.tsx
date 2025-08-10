@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils"; // Import utility for combining class names
 import Header from "./_components/header"; // Import the site header component
 import Footer from "./_components/footer"; // Import the site footer component
 import { ThemeProvider } from "@/components/theme-provider"; // Import theme provider from shadcn/ui setup
+import { siteConfig } from "@/content/config/textConfig"; // Import site configuration
 
 // Initialize the Inter font with desired subsets and define a CSS variable
 const inter = Inter({
@@ -12,9 +13,11 @@ const inter = Inter({
     variable: "--font-sans", // Will be used in tailwind.config.ts
 });
 
+// Use siteConfig for metadata
 export const metadata: Metadata = {
-    title: "Company Awesome",
-    description: "Company Website Template",
+    title: siteConfig.siteTitle,
+    description: siteConfig.siteDescription,
+    // You can add more metadata from siteConfig if needed, e.g., openGraph images
 };
 
 export default function RootLayout({

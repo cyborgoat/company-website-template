@@ -2,29 +2,24 @@
 
 import MarkdownRenderer from '@/components/MarkdownRenderer'; // Adjust path if necessary
 // Assume you create lib/blogs.ts similar to lib/news.ts
-import {BlogPostData, getAllBlogSlugs, getBlogData} from '@/lib/blogs'; // Adjust paths/names if necessary
+import { BlogPostData } from '@/types/content'; // Corrected import for BlogPostData
+import { getAllBlogPostSlugs, getBlogPostData } from '@/lib/blogs'; // Corrected import for functions
 import {notFound} from 'next/navigation';
 import {Metadata} from 'next';
 import Link from 'next/link';
 
-// Define props type
-interface BlogPostPageProps {
-    params: {
-        slug: string;
-    };
-}
 
 // Add generateStaticParams for blogs
 export async function generateStaticParams() {
-    return getAllBlogSlugs().map(({ params }) => params);
+    return getAllBlogPostSlugs().map(({ params }) => params);
 }
 
 // Add generateMetadata for blogs
 export async function generateMetadata(props: { params: { slug: string } }): Promise<Metadata> {
     const { slug } = props.params;
     try {
-        // Assumes getBlogData exists in lib/blogs.ts
-        const post = await getBlogData(slug);
+        // Assumes getBlogPostData exists in lib/blogs.ts
+        const post = await getBlogPostData(slug);
         return {
             // Use excerpt if available, otherwise fallback
             title: post.title,
@@ -41,12 +36,12 @@ export async function generateMetadata(props: { params: { slug: string } }): Pro
 
 // Update the main component
 export default async function BlogPostPage(props: { params: { slug: string } }) {
-    const { slug } = props.params;
+    const { slug } = await props.params; // Await the params
     let post: BlogPostData;
 
     try {
         // Use your actual data fetching function from lib/blogs.ts
-        post = await getBlogData(slug);
+        post = await getBlogPostData(slug);
     } catch (error) {
         console.error(`Data fetching failed for blog post slug: ${slug}`, error);
         notFound(); // Use notFound for 404

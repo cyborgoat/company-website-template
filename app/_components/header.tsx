@@ -5,6 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -68,45 +69,51 @@ const Header = () => {
             </Link>
           ))}
         </nav>
-  <div className="md:hidden justify-self-end col-start-3">
-          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className={cn(
-                  "hover:bg-white/10",
-                  hasScrolled
-                    ? "text-foreground hover:bg-accent"
-                    : "text-white hover:text-white"
-                )}
-                aria-label="Toggle Menu"
+        <div className="flex items-center gap-4 justify-self-end col-start-3">
+          <div className="hidden md:block">
+            <ThemeToggle />
+          </div>
+          <div className="md:hidden">
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className={cn(
+                    "hover:bg-white/10",
+                    hasScrolled
+                      ? "text-foreground hover:bg-accent"
+                      : "text-white hover:text-white"
+                  )}
+                  aria-label="Toggle Menu"
+                >
+                  {isMobileMenuOpen ? (
+                    <X className="h-6 w-6" />
+                  ) : (
+                    <Menu className="h-6 w-6" />
+                  )}
+                </Button>
+              </SheetTrigger>
+              <SheetContent
+                side="right"
+                className="w-[300px] sm:w-[400px] bg-background p-6 border-l border-border/40"
               >
-                {isMobileMenuOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </Button>
-            </SheetTrigger>
-            <SheetContent
-              side="right"
-              className="w-[300px] sm:w-[400px] bg-background p-6 border-l border-border/40"
-            >
-              <div className="mt-8 flex flex-col space-y-4">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-lg font-medium text-foreground/80 hover:text-foreground transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </SheetContent>
-          </Sheet>
+                <div className="mt-8 flex flex-col space-y-4">
+                  <ThemeToggle />
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="text-lg font-medium text-foreground/80 hover:text-foreground transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
         </div>
       </div>

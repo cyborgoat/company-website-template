@@ -1,5 +1,6 @@
 import MarkdownRenderer from '@/components/MarkdownRenderer'; // Adjust path if necessary
-import {getAllNewsSlugs, getNewsData, NewsArticleData} from '@/lib/news'; // Adjust path if necessary
+import { getAllNewsArticleSlugs, getNewsArticleData } from '@/lib/news'; // Corrected import for functions
+import { NewsArticleData } from '@/types/content'; // Corrected import for NewsArticleData
 import {notFound} from 'next/navigation';
 import {Metadata} from 'next';
 import Link from 'next/link';
@@ -11,13 +12,13 @@ interface NewsArticleProps {
 }
 
 export async function generateStaticParams() {
-    return getAllNewsSlugs().map(({ params }) => params);
+    return getAllNewsArticleSlugs().map(({ params }) => params);
 }
 
 export async function generateMetadata(props: NewsArticleProps): Promise<Metadata> {
     const { slug } = props.params;
     try {
-        const article = await getNewsData(slug);
+        const article = await getNewsArticleData(slug);
         return {
             title: article.title,
             description: article.excerpt,
@@ -36,7 +37,7 @@ export default async function NewsArticle(props: NewsArticleProps) {
     let article: NewsArticleData;
 
     try {
-        article = await getNewsData(slug);
+        article = await getNewsArticleData(slug);
     } catch (error) {
         console.error(`Data fetching failed for news article slug: ${slug}`, error);
         notFound();

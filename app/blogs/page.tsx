@@ -2,7 +2,8 @@
 // NO 'use client'; directive here - This is a Server Component
 
 import React from 'react';
-import {BlogPostData, getSortedBlogData} from '@/lib/blogs'; // Import data fetching
+import { BlogPostData } from '@/types/content'; // Corrected import for BlogPostData
+import { getSortedBlogPosts } from '@/lib/blogs'; // Import data fetching
 import {BlogGrid} from '@/components/BlogGrid'; // Import client grid component
 import {Metadata} from 'next'; // Import Metadata type
 
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function BlogsPage() {
     // Fetch blog post data on the server
-    const allPosts: BlogPostData[] = getSortedBlogData();
+    const allPosts: BlogPostData[] = getSortedBlogPosts();
 
     return (
         // Use regular main tag, animations handled in BlogGrid

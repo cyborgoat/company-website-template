@@ -1,10 +1,8 @@
-// app/team/page.tsx
 import {Metadata} from 'next';
 import {TeamIntroSection} from './sections/TeamIntroSection';
 import {TeamGridSection} from './sections/TeamGridSection';
 import type {TeamMember} from './sections/TeamMemberCard';
 
-// Your team data
 const teamMembers: TeamMember[] = [
     { id: 'jane-doe', name: 'Dr. Jane Doe', title: 'Chief Executive Officer', imageUrl: '/images/team/jane-doe.jpg', bio: 'Visionary leader with over 15 years of experience in AI R&D and commercialization.', category: 'Leadership', socials: { linkedin: '#', twitter: '#' } },
     { id: 'alex-smith', name: 'Alex Smith', title: 'Head of Research', imageUrl: '/images/team/alex-smith.jpg', bio: 'Pioneering research in Natural Language Processing and Large Language Models.', category: 'Research', expertise: ['NLP', 'Large Language Models', 'Deep Learning'], socials: { linkedin: '#', github: '#', website: '#' } },
@@ -14,7 +12,6 @@ const teamMembers: TeamMember[] = [
 ]; // Remember to replace '#' with actual links and add real images!
 
 
-// Metadata for the page
 export const metadata: Metadata = {
     title: 'Our Team | Your AI Company', // Customize
     description: 'Meet the talented team behind our cutting-edge AI solutions.',

@@ -1,11 +1,7 @@
-// app/news/page.tsx
-
-// Remove 'use client'; - this is now a Server Component
-
 import React from 'react';
-// Remove unused imports like Link, Button, Card*, Newspaper, Calendar, motion, animations
-import {getSortedNewsData, NewsArticleData} from '@/lib/news'; // Import data fetching function
-import {NewsGrid} from '@/components/NewsGrid'; // Import the new client component
+import { NewsArticleData } from '@/types/content'; 
+import { getSortedNewsArticles } from '@/lib/news';
+import {NewsGrid} from '@/components/NewsGrid';
 import {Metadata} from 'next';
 
 // Optional: Add Metadata for SEO
@@ -16,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function NewsPage() {
     // Fetch data on the server
-    const allNews: NewsArticleData[] = getSortedNewsData();
+    const allNews: NewsArticleData[] = getSortedNewsArticles();
 
     return (
         // Keep your main layout and intro text
